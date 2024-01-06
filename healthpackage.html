@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tanuja Hospital</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="C:\Users\91989\Pictures\Screenshots\Screenshot 2024-01-03 220810.png" alt="Tanuja Hospital">
+      <h1>Tanuja Hospital</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="available_blood_samples.html">Available Blood Samples</a></li>
+        <li><a href="add_blood_info.html">Add Blood Info</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="availablebloodsamples.html">Available blood samples</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Main Content Section -->
+    <h1>Book Health Packages</h1>
+    <section class="health-packages">
+      <form action="submit_booking_details.php" method="POST" class="booking-form">
+        <div class="form-group">
+          <label for="package">Select Health Package:</label>
+          <select id="package" name="package" onchange="calculateAmount()" required>
+            <option value="">Select Package</option>
+            <option value="anemia">Anemia Panel - Rs 2000</option>
+            <option value="cardiac">Cardiac Panel - Rs 800</option>
+            <option value="diabetes">Diabetes Panel - Rs 800</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="amount">Total Amount:</label>
+          <input type="text" id="amount" name="amount" readonly>
+        </div>
+        <input type="submit" value="Book Now" class="submit-btn">
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <!-- Hospital Contact Information -->
+    <div class="contact-info">
+      <h2>Contact Information</h2>
+      <p>Hospital Address: 123 Main Street, City, Country</p>
+      <p>Contact Number: +123456789</p>
+      <p>Email: hospital@example.com</p>
+    </div>
+  
+    <!-- Book My Appointment Form -->
+    <div class="appointment-form">
+      <h2>Book My Appointment</h2>
+      <form>
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <input type="tel" placeholder="Mobile No.">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </footer>
+
+  <script>
+    function calculateAmount() {
+      let package = document.getElementById('package').value;
+      let amountField = document.getElementById('amount');
+
+      switch (package) {
+        case 'anemia':
+          amountField.value = 'Rs 2000';
+          break;
+        case 'cardiac':
+        case 'diabetes':
+          amountField.value = 'Rs 800';
+          break;
+        default:
+          amountField.value = '';
+          break;
+      }
+    }
+  </script>
+</body>
+</html>
