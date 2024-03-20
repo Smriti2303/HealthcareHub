@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+<header>
+    <div class="logo">
+      <img src="C:\Users\91989\Downloads\Screenshot_2024-01-03_220810-removebg-preview.png" alt="Tanuja Hospital">
+      <h1>Tanuja Hospital</h1>
+    </div>
+    <br>
+    <br>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="add_blood_info.html">Add Blood Info</a></li>
+        <li><a href="availablebloodsamples.html">Available blood samples</a></li>
+      </ul>
+    </nav>
+  </header>
+<style>
+/* Basic styling */
+/* Header Styles */
+header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 20px;
+  }
+  
+  .logo img {
+    width: 100px;
+  }
+  
+  nav ul {
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  nav ul li a:hover {
+    color: #99ccff;
+  }
+  
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff; /* Light blue */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    background-color: #ffffff; /* White */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+.form-group button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue */
+    color: #ffffff; /* White */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Contact Us</h1>
+
+    <form id="contactForm" action="submit_form.php" method="post" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit">Send Message</button>
+        </div>
+    </form>
+
+</div>
+
+<script>
+function validateForm() {
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
+
+    // Check if name, email, and message are not empty
+    if (name === '' || email === '' || message === '') {
+        alert('Please fill in all fields.');
+        return false;
+    }
+
+    // Check if email format is valid
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+</body>
+</html>

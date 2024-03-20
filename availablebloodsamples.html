@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Available Blood Samples</title>
+<style>
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff; /* Light blue */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #ccc;
+    background-color: #ffffff; /* White */
+}
+
+.logo img {
+    max-width: 150px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.search-bar {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background-color: #ffffff; /* White */
+}
+
+.intro {
+    margin-top: 20px;
+}
+
+.blood-sample {
+    margin-top: 20px;
+}
+
+.blood-sample table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.blood-sample table th, .blood-sample table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.blood-sample table th {
+    background-color: #f2f2f2;
+}
+
+.call-to-action {
+    margin-top: 20px;
+}
+
+.footer {
+    margin-top: 20px;
+    border-top: 2px solid #ccc;
+    padding-top: 20px;
+    background-color: #ffffff; /* White */
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            <img src="C:\Users\91989\Downloads\Screenshot_2024-01-03_220810-removebg-preview.png" alt="Hospital Logo">
+        </div>
+        <nav>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="contact.html">Contact</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="availablebloodsamples.html">Available blood samples</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search..." onkeyup="filterBloodSamples()">
+            <button onclick="filterBloodSamples()">Search</button>
+        </div>
+    </header>
+
+    <div class="intro">
+        <h1>Available Blood Samples</h1>
+        <p>Welcome to our blood bank. Below is the list of available blood samples along with their details. Please feel free to contact us for any inquiries.</p>
+    </div>
+
+    <div class="blood-sample" id="bloodSampleTable">
+        <!-- Blood sample table will be populated dynamically -->
+    </div>
+
+    <div class="call-to-action">
+        <button onclick="requestBloodSample()">Request Blood Sample</button>
+        <button onclick="learnMore()">Learn More about Donation Process</button>
+        <button onclick="share()">Share</button>
+    </div>
+<br>
+   <!-- Footer Section -->
+  <footer>
+    <!-- Hospital Contact Information -->
+    <div class="contact-info">
+      <h2>Contact Information</h2>
+      <p>Hospital Address: A-205,shastri nagar,Meerut,UP</p>
+      <p>Contact Number: +919897007549</p>
+      <p>Email: tanujamahajan@gmail.com</p>
+    </div>
+</div>
+
+<script>
+// Sample blood data (replace with dynamic data fetching)
+const bloodSamples = [
+    { bloodType: "A+", quantity: 10, collectionDate: "2024-03-21", expiryDate: "2024-04-21", donorInfo: "Anonymous", specialCharacteristics: "None" },
+    { bloodType: "O-", quantity: 5, collectionDate: "2024-03-20", expiryDate: "2024-04-20", donorInfo: "John Doe", specialCharacteristics: "Rare type" },
+    { bloodType: "A+", quantity: 10, collectionDate: "2024-03-21", expiryDate: "2024-04-21", donorInfo: "Anonymous", specialCharacteristics: "None" },
+    { bloodType: "O-", quantity: 5, collectionDate: "2024-03-20", expiryDate: "2024-04-20", donorInfo: "John Doe", specialCharacteristics: "Rare type" },
+    { bloodType: "B+", quantity: 7, collectionDate: "2024-03-22", expiryDate: "2024-04-22", donorInfo: "Jane Smith", specialCharacteristics: "None" },
+    { bloodType: "AB-", quantity: 3, collectionDate: "2024-03-19", expiryDate: "2024-04-19", donorInfo: "Robert Johnson", specialCharacteristics: "Highly sought after" },
+    { bloodType: "O+", quantity: 8, collectionDate: "2024-03-18", expiryDate: "2024-04-18", donorInfo: "Emily Brown", specialCharacteristics: "None" },
+];
+// Function to filter blood samples based on search input
+function filterBloodSamples() {
+    const searchInput = document.getElementById('searchInput').value.toUpperCase();
+    const filteredSamples = bloodSamples.filter(sample =>
+        sample.bloodType.toUpperCase().includes(searchInput)
+    );
+    displayBloodSamples(filteredSamples);
+}
+
+// Function to display blood samples in table
+function displayBloodSamples(samples) {
+    const table = `
+        <div class="blood-sample">
+            <h2>Blood Sample Listings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Blood Type</th>
+                        <th>Quantity Available</th>
+                        <th>Date of Collection</th>
+                        <th>Expiry Date</th>
+                        <th>Donor Information</th>
+                        <th>Special Characteristics</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${samples.map(sample =>
+                        `<tr>
+                            <td>${sample.bloodType}</td>
+                            <td>${sample.quantity}</td>
+                            <td>${sample.collectionDate}</td>
+                            <td>${sample.expiryDate}</td>
+                            <td>${sample.donorInfo}</td>
+                            <td>${sample.specialCharacteristics}</td>
+                        </tr>`
+                    ).join('')}
+                </tbody>
+            </table>
+        </div>`;
+    document.getElementById('bloodSampleTable').innerHTML = table;
+}
+// Function to request blood sample
+function requestBloodSample() {
+    // Implement functionality to request blood sample
+}
+
+// Function to learn more about donation process
+function learnMore() {
+    // Implement functionality to learn more about donation process
+}
+
+// Function to share blood sample information
+function share() {
+    // Implement functionality to share blood sample information
+}
+
+// Initial display of blood samples
+displayBloodSamples(bloodSamples);
+</script>
+
+</body>
+</html>
+
+
